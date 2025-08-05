@@ -3,7 +3,7 @@ import { PdfFormData } from '../types';
 
 export const getEntries = (formData: PdfFormData): [string, string][] => [
   ['Mentee name and surname:', formData.menteeNameSurname],
-  ['Session 1 – Date:', formData.date],
+  ['Date:', formData.date],
   ['Successes:', formData.successes],
   ['Challenges:', formData.challenges],
   ['AI Tools Discussed:', formData.aiTools],
@@ -20,10 +20,10 @@ export const formatTextBlock = (
   text: string,
   y: number
 ): number => {
-  doc.setFont('Roboto', 'bold');
+  doc.setFont('helvetica', 'bold');
   doc.text(label, 10, y);
   y += 6;
-  doc.setFont('Roboto', 'normal');
+  doc.setFont('helvetica', 'normal');
   const lines = doc.splitTextToSize(text || '-', 180);
   doc.text(lines, 10, y);
   return y + lines.length * 6 + 4;
@@ -31,9 +31,12 @@ export const formatTextBlock = (
 
 export const generatePDF = (pdfFormData: PdfFormData) => {
   const doc = new jsPDF();
-  doc.setFontSize(12);
+  doc.setFontSize(16);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Session Log', 105, 15, { align: 'center' });
 
-  let y = 20;
+  doc.setFontSize(12);
+  let y = 25;
 
   getEntries(pdfFormData).forEach(([label, text]) => {
     y = formatTextBlock(doc, label, text, y);
