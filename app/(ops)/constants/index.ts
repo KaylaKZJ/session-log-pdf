@@ -1,6 +1,7 @@
 import { PdfFormData } from '../types';
 
 export const FIELD_KEYS = {
+  menteeNameSurname: 'menteeNameSurname',
   date: 'date',
   successes: 'successes',
   challenges: 'challenges',
@@ -13,6 +14,11 @@ export const FIELD_KEYS = {
 } as const;
 
 export const INPUT_FIELDS = [
+  {
+    type: 'TextInput',
+    placeholder: 'Name & surname',
+    fieldKey: FIELD_KEYS.menteeNameSurname,
+  },
   { type: 'TextInput', placeholder: 'Date', fieldKey: FIELD_KEYS.date },
   {
     type: 'Textarea',
