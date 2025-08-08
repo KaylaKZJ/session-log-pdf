@@ -1,3 +1,5 @@
+import { FieldType } from '../enums';
+
 export interface PdfFormData {
   menteeNameSurname: string;
   date: string;
@@ -9,4 +11,10 @@ export interface PdfFormData {
   longGoals: string;
   velocity: string;
   notes: string;
+}
+export interface FieldData {
+  fieldKey: keyof PdfFormData;
+  type: FieldType;
+  placeholder: string;
+  required: boolean;
 }

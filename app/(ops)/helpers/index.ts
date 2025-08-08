@@ -30,19 +30,40 @@ export const formatTextBlock = (
 };
 
 export const generatePDF = (pdfFormData: PdfFormData) => {
-  const doc = new jsPDF();
-  doc.setFontSize(16);
-  doc.setFont('helvetica', 'bold');
-  doc.text('Session Log', 105, 15, { align: 'center' });
+  try {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Session Log', 105, 15, { align: 'center' });
 
-  doc.setFontSize(12);
-  let y = 25;
+    doc.setFontSize(12);
+    let y = 25;
 
-  getEntries(pdfFormData).forEach(([label, text]) => {
-    y = formatTextBlock(doc, label, text, y);
-  });
+    getEntries(pdfFormData).forEach(([label, text]) => {
+      y = formatTextBlock(doc, label, text, y);
+    });
 
-  doc.save(
-    `Session_Log_${pdfFormData.date}-${pdfFormData.menteeNameSurname}.pdf`
+    try {
+      doc.save(
+        `Session_Log_${pdfFormData.date}-${pdfFormData.menteeNameSurname}.pdf`
+      );
+    } catch (saveError) {
+      console.error('Failed to save PDF:', saveError);
+      throw new Error('PDF generation succeeded but saving failed.');
+    }
+  } catch (error) {
+    console.error('Failed to generate PDF:', error);
+    alert('An error occurred while generating the PDF. Please try again.');
+  }
+};
+
+export const isFormValid = (
+  pdfFormData: PdfFormData,
+  requiredFields: string[]
+): boolean => {
+  return Object.keys(pdfFormData).every(
+    (key) =>
+      !requiredFields.includes(key as keyof PdfFormData) ||
+      pdfFormData[key as keyof PdfFormData].trim() !== ''
   );
 };

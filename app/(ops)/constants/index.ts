@@ -1,3 +1,4 @@
+import { FieldType } from '../enums';
 import { PdfFormData } from '../types';
 
 export const FIELD_KEYS = {
@@ -15,50 +16,64 @@ export const FIELD_KEYS = {
 
 export const INPUT_FIELDS = [
   {
-    type: 'TextInput',
-    placeholder: 'Name & surname',
     fieldKey: FIELD_KEYS.menteeNameSurname,
+    type: FieldType.TextInput,
+    placeholder: 'Name & surname',
+    required: true,
   },
-  { type: 'TextInput', placeholder: 'Date', fieldKey: FIELD_KEYS.date },
   {
-    type: 'Textarea',
-    placeholder: 'Successes',
+    fieldKey: FIELD_KEYS.date,
+    type: FieldType.TextInput,
+    placeholder: 'Date',
+    required: true,
+  },
+  {
     fieldKey: FIELD_KEYS.successes,
+    type: FieldType.Textarea,
+    placeholder: 'Successes',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'Challenges',
     fieldKey: FIELD_KEYS.challenges,
+    type: FieldType.Textarea,
+    placeholder: 'Challenges',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'AI Tools Discussed',
     fieldKey: FIELD_KEYS.aiTools,
+    type: FieldType.Textarea,
+    placeholder: 'AI Tools Discussed',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'VLE Progress',
     fieldKey: FIELD_KEYS.vleProgress,
+    type: FieldType.Textarea,
+    placeholder: 'VLE Progress',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'Short-term Goals',
     fieldKey: FIELD_KEYS.shortGoals,
+    type: FieldType.Textarea,
+    placeholder: 'Short-term Goals',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'Long-term Goals',
     fieldKey: FIELD_KEYS.longGoals,
+    type: FieldType.Textarea,
+    placeholder: 'Long-term Goals',
+    required: true,
   },
   {
-    type: 'TextInput',
-    placeholder: 'Velocity Check (%)',
     fieldKey: FIELD_KEYS.velocity,
+    type: FieldType.TextInput,
+    placeholder: 'Velocity Check (%)',
+    required: true,
   },
   {
-    type: 'Textarea',
-    placeholder: 'Additional Notes',
     fieldKey: FIELD_KEYS.notes,
+    type: FieldType.Textarea,
+    placeholder: 'Additional Notes',
+    required: false,
   },
 ];
 
