@@ -6,7 +6,7 @@ import { PdfFormData } from '../types';
 export function useSessionLog(pdfFormData: PdfFormData) {
   const requiredFields = useMemo(
     () =>
-      INPUT_FIELDS.filter((field) => field.required).map(
+      INPUT_FIELDS.filter((field) => field.required && !field.hidden).map(
         (field) => field.fieldKey
       ),
     []

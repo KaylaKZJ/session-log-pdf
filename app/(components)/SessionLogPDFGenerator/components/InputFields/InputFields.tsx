@@ -29,7 +29,7 @@ export default function InputFields({
 
   return (
     <>
-      {fieldData.map(({ type, placeholder, fieldKey, required }) => {
+      {fieldData.map(({ type, placeholder, fieldKey, required, hidden }) => {
         const value = pdfFormData[fieldKey];
         const showError = required && touched[fieldKey] && !value.trim();
         const commonProps = {
@@ -40,7 +40,7 @@ export default function InputFields({
           className: showError ? 'border-red-500' : '',
         };
 
-        if (type === FieldType.TextInput) {
+        if (type === FieldType.TextInput && !hidden) {
           return (
             <div key={fieldKey} className='flex flex-col space-y-1'>
               <TextInput {...commonProps} />
@@ -53,7 +53,7 @@ export default function InputFields({
           );
         }
 
-        if (type === FieldType.Textarea) {
+        if (type === FieldType.Textarea && !hidden) {
           return (
             <div key={fieldKey} className='flex flex-col space-y-1'>
               <Textarea {...commonProps} />

@@ -17,4 +17,5 @@ export interface FieldData {
   type: FieldType;
   placeholder: string;
   required: boolean;
+  hidden: boolean;
 }
