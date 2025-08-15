@@ -76,14 +76,14 @@ export const INPUT_FIELDS = [
     type: FieldType.TextInput,
     placeholder: 'Velocity Check (%)',
     required: true,
-    hidden: true,
+    hidden: false,
   },
   {
     fieldKey: FIELD_KEYS.notes,
     type: FieldType.Textarea,
     placeholder: 'Additional Notes',
     required: false,
-    hidden: true,
+    hidden: false,
   },
 ];
 
